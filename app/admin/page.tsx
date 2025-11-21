@@ -1,5 +1,5 @@
 import { prisma } from "@/lib/prisma" // Assuming prisma client is exported from here, need to check
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card" // Need to check if these exist or create simple ones
+
 import { Package, ShoppingCart, DollarSign, Users } from "lucide-react"
 
 // Fallback UI components if shadcn/ui is not installed

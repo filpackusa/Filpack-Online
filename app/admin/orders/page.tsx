@@ -1,6 +1,18 @@
 import { prisma } from "@/lib/prisma"
 import { updateOrderStatus } from "@/app/actions/orders"
 import { format } from "date-fns" // Need to check if date-fns is installed, if not use native Date
+import { Prisma } from "@prisma/client"
+
+type OrderWithDetails = Prisma.OrderGetPayload<{
+    include: {
+        customer: true
+        items: {
+            include: {
+                product: true
+            }
+        }
+    }
+}>
 
 // Helper for date formatting if date-fns is missing
 const formatDate = (date: Date) => {
@@ -45,7 +57,7 @@ export default async function OrdersPage() {
                         </tr>
                     </thead>
                     <tbody>
-                        {orders.map((order) => (
+                        {orders.map((order: OrderWithDetails) => (
                             <tr key={order.id} className="border-b hover:bg-gray-50">
                                 <td className="px-6 py-4 font-medium text-gray-900">
                                     #{order.id.slice(-6).toUpperCase()}
@@ -70,10 +82,10 @@ export default async function OrdersPage() {
                                             name="status"
                                             defaultValue={order.status}
                                             className={`rounded-full px-3 py-1 text-xs font-semibold ${order.status === "PAID"
-                                                    ? "bg-green-100 text-green-800"
-                                                    : order.status === "PENDING"
-                                                        ? "bg-yellow-100 text-yellow-800"
-                                                        : "bg-blue-100 text-blue-800"
+                                                ? "bg-green-100 text-green-800"
+                                                : order.status === "PENDING"
+                                                    ? "bg-yellow-100 text-yellow-800"
+                                                    : "bg-blue-100 text-blue-800"
                                                 }`}
                                             onChange={(e) => {
                                                 // This is a bit tricky with server actions in onChange without JS
