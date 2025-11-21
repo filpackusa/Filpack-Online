@@ -1,0 +1,31 @@
+{
+    "site": {
+        "name": "Filpack Online",
+        "description": "Profesyonel Gıda Ambalaj Çözümleri",
+        "url": "https://filpackonline.com"
+    },
+    "company": {
+        "name": "Filpack Ambalaj San. Tic. Ltd. Şti.",
+        "address": "200K ST NE 1012 Washington DC 20002",
+        "phone": "+18572336053",
+        "email": "info@filpackonline.com"
+    },
+    "payment": {
+        "currency": "USD",
+        "stripe": {
+            "publishableKey": "pk_test_...",
+            "secretKey": "sk_test_..."
+        }
+    },
+    "social": {
+        "instagram": "https://instagram.com/filpackonline",
+        "facebook": "https://facebook.com/filpackonline",
+        "twitter": "https://twitter.com/filpackonline"
+    },
+    "theme": {
+        "colors": {
+            "primary": "slate-900",
+            "accent": "orange-500"
+        }
+    }
+}

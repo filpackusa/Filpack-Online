@@ -1,0 +1,150 @@
+{
+    "nav": {
+        "home": "Home",
+        "products": "Products",
+        "about": "About Us",
+        "contact": "Contact",
+        "trackOrder": "Track Order",
+        "search": "Search products...",
+        "cart": "Cart",
+        "palletWrap": "Pallet Wrap Net",
+        "tubeNet": "Tube Net",
+        "stretchFilm": "Stretch Film"
+    },
+    "hero": {
+        "slogan": "Professional Packaging Solutions",
+        "subSlogan": "High quality, FDA approved food packaging for your business.",
+        "shopNow": "Shop Now",
+        "getQuote": "Get Custom Quote",
+        "trust": {
+            "fda": "FDA Approved",
+            "shipping": "Fast Shipping",
+            "wholesale": "Wholesale"
+        }
+    },
+    "cart": {
+        "title": "Shopping Cart",
+        "empty": "Your cart is empty.",
+        "subtotal": "Subtotal",
+        "shipping": "Shipping",
+        "total": "Total",
+        "checkout": "Proceed to Checkout",
+        "product": "Product",
+        "price": "Price",
+        "quantity": "Quantity",
+        "totalPrice": "Total",
+        "continueShopping": "Continue Shopping",
+        "orderSummary": "Order Summary",
+        "securePayment": "256-bit SSL Secure Payment"
+    },
+    "home": {
+        "featuredTitle": "Best Sellers",
+        "featuredDesc": "Most preferred products by our customers.",
+        "viewAll": "View All Products",
+        "trustTitle": "Looking for Wholesale?",
+        "trustDesc": "We offer special pricing and corporate solutions for high volume orders. Contact us now for a custom quote.",
+        "getQuote": "Get Quote"
+    },
+    "productDetail": {
+        "home": "Home",
+        "inStock": "In Stock",
+        "sku": "SKU",
+        "reviews": "Reviews",
+        "perPack": "/ pack",
+        "shipping": "Ships in 24 Hours",
+        "minOrder": "(Min. order: 1 pack)",
+        "addToCart": "Add to Cart",
+        "securePayment": "Secure Payment",
+        "returnPolicy": "30 Days Return",
+        "specs": "Specifications",
+        "details": "Product Details",
+        "related": "Frequently Bought Together"
+    },
+    "products": {
+        "filter": "Filter",
+        "categories": "Categories",
+        "all": "All",
+        "priceRange": "Price Range",
+        "allProducts": "All Products",
+        "sortBy": "Sort By",
+        "sort": {
+            "recommended": "Recommended",
+            "lowestPrice": "Lowest Price",
+            "highestPrice": "Highest Price",
+            "bestSellers": "Best Sellers"
+        },
+        "quickAdd": "Quick Add",
+        "casePrice": "Case Price",
+        "listing": "Listing {count} products",
+        "prev": "Previous",
+        "next": "Next",
+        "bestsellers": "Best Sellers",
+        "addToCart": "Add to Cart",
+        "outOfStock": "Out of Stock",
+        "price": "Price",
+        "description": "Description",
+        "specifications": "Specifications",
+        "items": {
+            "burgerBox": "Kraft Hamburger Box (100 pcs)",
+            "saladBowl": "Clear Salad Bowl 750ml"
+        }
+    },
+    "checkout": {
+        "steps": {
+            "cart": "Cart",
+            "payment": "Payment",
+            "confirm": "Confirm"
+        },
+        "shippingAddress": "Shipping Address",
+        "fields": {
+            "firstName": "First Name",
+            "lastName": "Last Name",
+            "address": "Address",
+            "city": "City",
+            "zipCode": "Zip Code"
+        },
+        "paymentMethod": "Payment Method",
+        "creditCard": "Credit / Debit Card (Stripe)",
+        "stripeInfo": "Payment will be processed securely via Stripe. You will be redirected to Stripe checkout page when you click 'Pay Now'.",
+        "payNow": "Pay Now",
+        "agreement": "By completing the order, you accept the Sales Agreement."
+    },
+    "categories": {
+        "title": "Browse Categories",
+        "desc": "Find the packaging solution you need quickly.",
+        "viewAll": "All Categories",
+        "items": {
+            "plastic": "Plastic Containers",
+            "paper": "Paper Boxes",
+            "cups": "Cups",
+            "bags": "Bags",
+            "cutlery": "Cutlery",
+            "netting": "Netting",
+            "stretchFilm": "Stretch Film"
+        }
+    },
+    "trackOrder": {
+        "title": "Track Order",
+        "desc": "You can query the status with your order number and email address.",
+        "orderId": "Order Number",
+        "email": "Email Address",
+        "placeholderId": "Ex: clr...",
+        "placeholderEmail": "example@email.com",
+        "searching": "Searching...",
+        "search": "Track Order",
+        "notFound": "Order not found",
+        "date": "Order Date",
+        "total": "Total Amount",
+        "status": {
+            "received": "Order Received",
+            "preparing": "Preparing",
+            "shipped": "Shipped"
+        },
+        "trackingNumber": "Tracking Number",
+        "carrier": "Carrier",
+        "trackButton": "Where is my cargo?",
+        "items": "Order Items",
+        "quantity": "qty"
+    }
+}
+```

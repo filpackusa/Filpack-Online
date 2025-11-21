@@ -1,0 +1,149 @@
+{
+    "nav": {
+        "home": "Inicio",
+        "products": "Productos",
+        "about": "Sobre Nosotros",
+        "contact": "Contacto",
+        "trackOrder": "Rastrear Pedido",
+        "search": "Buscar productos...",
+        "cart": "Carrito",
+        "palletWrap": "Red para Palets",
+        "tubeNet": "Red Tubular",
+        "stretchFilm": "Film Estirable"
+    },
+    "hero": {
+        "slogan": "Soluciones Profesionales de Empaque",
+        "subSlogan": "Empaque de alta calidad, aprobado por la FDA, para su negocio.",
+        "shopNow": "Comprar Ahora",
+        "getQuote": "Obtener Cotización Personalizada",
+        "trust": {
+            "fda": "Aprobado por la FDA",
+            "shipping": "Envío Rápido",
+            "wholesale": "Venta al por Mayor"
+        }
+    },
+    "cart": {
+        "title": "Carrito de Compras",
+        "empty": "Tu carrito está vacío.",
+        "subtotal": "Subtotal",
+        "shipping": "Envío",
+        "total": "Total",
+        "checkout": "Proceder al Pago",
+        "product": "Producto",
+        "price": "Precio",
+        "quantity": "Cantidad",
+        "totalPrice": "Total",
+        "continueShopping": "Seguir Comprando",
+        "orderSummary": "Resumen del Pedido",
+        "securePayment": "Pago Seguro con SSL de 256 bits"
+    },
+    "home": {
+        "featuredTitle": "Los Más Vendidos",
+        "featuredDesc": "Los productos más preferidos por nuestros clientes.",
+        "viewAll": "Ver Todos los Productos",
+        "trustTitle": "¿Busca Compra al por Mayor?",
+        "trustDesc": "Ofrecemos precios especiales y soluciones corporativas para pedidos de alto volumen. Contáctenos ahora para una cotización personalizada.",
+        "getQuote": "Obtener Cotización"
+    },
+    "productDetail": {
+        "home": "Inicio",
+        "inStock": "En Stock",
+        "sku": "SKU",
+        "reviews": "Reseñas",
+        "perPack": "/ paquete",
+        "shipping": "Envío en 24 Horas",
+        "minOrder": "(Pedido Mínimo: 1 paquete)",
+        "addToCart": "Agregar al Carrito",
+        "securePayment": "Pago Seguro",
+        "returnPolicy": "Devolución en 30 Días",
+        "specs": "Especificaciones",
+        "details": "Detalles del Producto",
+        "related": "Comprados Juntos"
+    },
+    "products": {
+        "filter": "Filtrar",
+        "categories": "Categorías",
+        "all": "Todo",
+        "priceRange": "Rango de Precio",
+        "allProducts": "Todos los Productos",
+        "sortBy": "Ordenar Por",
+        "sort": {
+            "recommended": "Recomendado",
+            "lowestPrice": "Precio Más Bajo",
+            "highestPrice": "Precio Más Alto",
+            "bestSellers": "Más Vendidos"
+        },
+        "quickAdd": "Agregar Rápido",
+        "casePrice": "Precio por Caja",
+        "listing": "Listando {count} productos",
+        "prev": "Anterior",
+        "next": "Siguiente",
+        "bestsellers": "Más Vendidos",
+        "addToCart": "Agregar al Carrito",
+        "outOfStock": "Sin Stock",
+        "price": "Precio",
+        "description": "Descripción",
+        "specifications": "Specifications",
+        "items": {
+            "burgerBox": "Caja de Hamburguesa Kraft (100 pzs)",
+            "saladBowl": "Ensaladera Transparente 750ml"
+        }
+    },
+    "checkout": {
+        "steps": {
+            "cart": "Carrito",
+            "payment": "Pago",
+            "confirm": "Confirmar"
+        },
+        "shippingAddress": "Dirección de Envío",
+        "fields": {
+            "firstName": "Nombre",
+            "lastName": "Apellido",
+            "address": "Dirección",
+            "city": "Ciudad",
+            "zipCode": "Código Postal"
+        },
+        "paymentMethod": "Método de Pago",
+        "creditCard": "Tarjeta de Crédito/Débito (Stripe)",
+        "stripeInfo": "El pago se procesará de forma segura a través de Stripe. Serás redirigido a la página de pago de Stripe al hacer clic en 'Pagar Ahora'.",
+        "payNow": "Pagar Ahora",
+        "agreement": "Al completar el pedido, aceptas el Acuerdo de Venta."
+    },
+    "categories": {
+        "title": "Explorar Categorías",
+        "desc": "Encuentra rápidamente la solución de empaque que necesitas.",
+        "viewAll": "Todas las Categorías",
+        "items": {
+            "plastic": "Contenedores de Plástico",
+            "paper": "Cajas de Papel",
+            "cups": "Vasos",
+            "bags": "Bolsas",
+            "cutlery": "Cubiertos",
+            "netting": "Red (Netting)",
+            "stretchFilm": "Película Estirable"
+        }
+    },
+    "trackOrder": {
+        "title": "Rastrear Pedido",
+        "desc": "Puede consultar el estado con su número de pedido y dirección de correo electrónico.",
+        "orderId": "Número de Pedido",
+        "email": "Dirección de Correo Electrónico",
+        "placeholderId": "Ej: clr...",
+        "placeholderEmail": "ejemplo@email.com",
+        "searching": "Buscando...",
+        "search": "Rastrear Pedido",
+        "notFound": "Pedido no encontrado",
+        "date": "Fecha del Pedido",
+        "total": "Monto Total",
+        "status": {
+            "received": "Pedido Recibido",
+            "preparing": "Preparando",
+            "shipped": "Enviado"
+        },
+        "trackingNumber": "Número de Rastreo",
+        "carrier": "Transportista",
+        "trackButton": "¿Dónde está mi carga?",
+        "items": "Artículos del Pedido",
+        "quantity": "cant"
+    }
+}

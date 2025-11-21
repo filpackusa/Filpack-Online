@@ -1,0 +1,143 @@
+{
+    "nav": {
+        "home": "Anasayfa",
+        "products": "Ürünler",
+        "about": "Hakkımızda",
+        "contact": "İletişim",
+        "trackOrder": "Sipariş Takibi",
+        "search": "Ürün ara...",
+        "cart": "Sepet",
+        "palletWrap": "Palet Filesi",
+        "tubeNet": "Tüp File",
+        "stretchFilm": "Streç Film"
+    },
+    "hero": {
+        "slogan": "Profesyonel Ambalaj Çözümleri",
+        "subSlogan": "İşletmeniz için yüksek kaliteli, gıda uyumlu ambalajlar.",
+        "shopNow": "Ürünleri İncele",
+        "getQuote": "Özel Teklif Al",
+        "trust": {
+            "fda": "Gıda Uyumlu",
+            "shipping": "Hızlı Kargo",
+            "wholesale": "Toptan Satış"
+        }
+    },
+    "cart": {
+        "title": "Alışveriş Sepeti",
+        "empty": "Sepetiniz boş.",
+        "subtotal": "Ara Toplam",
+        "shipping": "Kargo",
+        "total": "Genel Toplam",
+        "checkout": "Ödemeye Geç",
+        "product": "Ürün",
+        "price": "Fiyat",
+        "quantity": "Adet",
+        "totalPrice": "Toplam",
+        "continueShopping": "Alışverişe Devam Et",
+        "orderSummary": "Sipariş Özeti",
+        "securePayment": "256-bit SSL Güvenli Ödeme"
+    },
+    "home": {
+        "featuredTitle": "Çok Satan Ürünler",
+        "featuredDesc": "Müşterilerimizin en çok tercih ettiği ürünler.",
+        "viewAll": "Tüm Ürünleri Gör",
+        "trustTitle": "İşletmeniz İçin Toptan Alım mı Yapmak İstiyorsunuz?",
+        "trustDesc": "Yüksek hacimli siparişleriniz için özel fiyatlandırma ve kurumsal çözümler sunuyoruz. Hemen bizimle iletişime geçin, size özel teklifimizi hazırlayalım.",
+        "getQuote": "Teklif İste"
+    },
+    "productDetail": {
+        "home": "Anasayfa",
+        "inStock": "Stokta Var",
+        "sku": "SKU",
+        "reviews": "Değerlendirme",
+        "perPack": "/ paket",
+        "shipping": "24 Saatte Kargo",
+        "minOrder": "(Min. sipariş: 1 paket)",
+        "addToCart": "Sepete Ekle",
+        "securePayment": "Güvenli Ödeme",
+        "returnPolicy": "30 Gün İade",
+        "specs": "Teknik Özellikler",
+        "details": "Ürün Detayları",
+        "related": "Birlikte Alınanlar"
+    },
+    "products": {
+        "filter": "Filtrele",
+        "categories": "Kategoriler",
+        "all": "Tümü",
+        "priceRange": "Fiyat Aralığı",
+        "allProducts": "Tüm Ürünler",
+        "sortBy": "Sırala",
+        "sort": {
+            "recommended": "Önerilen",
+            "lowestPrice": "En Düşük Fiyat",
+            "highestPrice": "En Yüksek Fiyat",
+            "bestSellers": "Çok Satanlar"
+        },
+        "quickAdd": "Hızlı Ekle",
+        "casePrice": "Koli Fiyatı",
+        "listing": "{count} ürün listeleniyor",
+        "prev": "Önceki",
+        "next": "Sonraki",
+        "items": {
+            "burgerBox": "Kraft Hamburger Kutusu (100'lü)",
+            "saladBowl": "Şeffaf Salata Kabı 750ml"
+        }
+    },
+    "checkout": {
+        "steps": {
+            "cart": "Sepet",
+            "payment": "Ödeme",
+            "confirm": "Onay"
+        },
+        "shippingAddress": "Teslimat Adresi",
+        "fields": {
+            "firstName": "Ad",
+            "lastName": "Soyad",
+            "address": "Adres",
+            "city": "Şehir",
+            "zipCode": "Posta Kodu"
+        },
+        "paymentMethod": "Ödeme Yöntemi",
+        "creditCard": "Kredi / Banka Kartı (Stripe)",
+        "stripeInfo": "Ödeme işlemi güvenli Stripe altyapısı üzerinden gerçekleştirilecektir. 'Ödemeye Geç' butonuna tıkladığınızda Stripe ödeme sayfasına yönlendirileceksiniz.",
+        "payNow": "Ödemeye Geç",
+        "agreement": "Siparişi tamamlayarak Satış Sözleşmesi'ni kabul etmiş olursunuz."
+    },
+    "categories": {
+        "title": "Kategorilere Göz Atın",
+        "desc": "İhtiyacınız olan ambalaj çözümünü hızlıca bulun.",
+        "viewAll": "Tüm Kategoriler",
+        "items": {
+            "plastic": "Plastik Kaplar",
+            "paper": "Kağıt Kutular",
+            "cups": "Bardaklar",
+            "bags": "Poşetler",
+            "cutlery": "Çatal Bıçak",
+            "netting": "File (Netting)",
+            "stretchFilm": "Streç Film"
+        }
+    },
+    "trackOrder": {
+        "title": "Sipariş Takibi",
+        "desc": "Sipariş numaranız ve e-posta adresinizle durum sorgulayabilirsiniz.",
+        "orderId": "Sipariş Numarası",
+        "email": "E-posta Adresi",
+        "placeholderId": "Örn: clr...",
+        "placeholderEmail": "ornek@email.com",
+        "searching": "Sorgulanıyor...",
+        "search": "Siparişi Sorgula",
+        "notFound": "Sipariş bulunamadı",
+        "date": "Sipariş Tarihi",
+        "total": "Toplam Tutar",
+        "status": {
+            "received": "Sipariş Alındı",
+            "preparing": "Hazırlanıyor",
+            "shipped": "Kargolandı"
+        },
+        "trackingNumber": "Kargo Takip Numarası",
+        "carrier": "Kargo Firması",
+        "trackButton": "Kargom Nerede?",
+        "items": "Sipariş İçeriği",
+        "quantity": "adet"
+    }
+}
