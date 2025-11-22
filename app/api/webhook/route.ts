@@ -96,7 +96,7 @@ export async function POST(req: Request) {
                         quantity: item.quantity || 1,
                         price: item.amount_total ? (item.amount_total / 100) / (item.quantity || 1) : 0,
                     })),
-                }),
+                }) as any,
             });
 
             return NextResponse.json({ result: event, ok: true });
