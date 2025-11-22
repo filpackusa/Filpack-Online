@@ -2,23 +2,43 @@ import { prisma } from "@/lib/prisma"
 import Link from "next/link"
 import { Plus, Pencil, Trash } from "lucide-react"
 import { deleteProduct } from "@/app/actions/products"
+import ProductSearch from "@/components/admin/product-search"
 
-export default async function ProductsPage() {
+export default async function ProductsPage({
+    searchParams,
+}: {
+    searchParams?: {
+        search?: string
+    }
+}) {
+    const search = searchParams?.search || ""
+
     const products = await prisma.product.findMany({
+        where: {
+            OR: [
+                { name: { contains: search } },
+                { sku: { contains: search } },
+            ],
+        },
         orderBy: { createdAt: "desc" },
     })
 
     return (
         <div>
-            <div className="mb-6 flex items-center justify-between">
+            <div className="mb-6 flex items-center justify-between gap-4">
                 <h1 className="text-2xl font-bold text-gray-800">Products</h1>
-                <Link
-                    href="/admin/products/new"
-                    className="flex items-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
-                >
-                    <Plus size={20} />
-                    Add Product
-                </Link>
+                <div className="flex flex-1 items-center justify-end gap-4">
+                    <div className="w-full max-w-sm">
+                        <ProductSearch />
+                    </div>
+                    <Link
+                        href="/admin/products/new"
+                        className="flex shrink-0 items-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
+                    >
+                        <Plus size={20} />
+                        Add Product
+                    </Link>
+                </div>
             </div>
 
             <div className="overflow-hidden rounded-lg border bg-white shadow-sm">

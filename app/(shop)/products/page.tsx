@@ -14,14 +14,19 @@ export default function ProductsPage() {
     const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
     const [sort, setSort] = useState('recommended');
 
+    const [minPrice, setMinPrice] = useState<number | undefined>();
+    const [maxPrice, setMaxPrice] = useState<number | undefined>();
+
     useEffect(() => {
         const fetchProducts = async () => {
             setLoading(true);
             try {
                 const fetchedProducts = await getProducts({
-                    category: selectedCategories.length > 0 ? selectedCategories[0] : undefined, // Simple single category filter for now
+                    category: selectedCategories.length > 0 ? selectedCategories[0] : undefined,
                     sort: sort === t('products.sort.lowestPrice') ? 'lowestPrice' :
-                        sort === t('products.sort.highestPrice') ? 'highestPrice' : undefined
+                        sort === t('products.sort.highestPrice') ? 'highestPrice' : undefined,
+                    minPrice,
+                    maxPrice
                 });
                 setProducts(fetchedProducts);
             } catch (error) {
@@ -31,8 +36,9 @@ export default function ProductsPage() {
             }
         };
 
-        fetchProducts();
-    }, [selectedCategories, sort, t]);
+        const timeoutId = setTimeout(fetchProducts, 500); // Debounce fetching
+        return () => clearTimeout(timeoutId);
+    }, [selectedCategories, sort, t, minPrice, maxPrice]);
 
     const toggleCategory = (catId: string) => {
         setSelectedCategories(prev =>
@@ -90,9 +96,21 @@ export default function ProductsPage() {
                                 <div className="pt-4 border-t border-slate-100">
                                     <h4 className="font-medium text-slate-900 mb-3">{t('products.priceRange')}</h4>
                                     <div className="flex items-center gap-2">
-                                        <input type="number" placeholder="Min" className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm" />
+                                        <input
+                                            type="number"
+                                            placeholder="Min"
+                                            className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm"
+                                            value={minPrice || ''}
+                                            onChange={(e) => setMinPrice(e.target.value ? Number(e.target.value) : undefined)}
+                                        />
                                         <span className="text-slate-400">-</span>
-                                        <input type="number" placeholder="Max" className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm" />
+                                        <input
+                                            type="number"
+                                            placeholder="Max"
+                                            className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm"
+                                            value={maxPrice || ''}
+                                            onChange={(e) => setMaxPrice(e.target.value ? Number(e.target.value) : undefined)}
+                                        />
                                     </div>
                                 </div>
                             </div>

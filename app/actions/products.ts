@@ -68,8 +68,9 @@ export async function getProducts(filters?: {
     minPrice?: number
     maxPrice?: number
     sort?: string
+    search?: string
 }) {
-    const { category, minPrice, maxPrice, sort } = filters || {}
+    const { category, minPrice, maxPrice, sort, search } = filters || {}
 
     const where: any = {}
 
@@ -81,6 +82,13 @@ export async function getProducts(filters?: {
         where.price = {}
         if (minPrice !== undefined) where.price.gte = minPrice
         if (maxPrice !== undefined) where.price.lte = maxPrice
+    }
+
+    if (search) {
+        where.OR = [
+            { name: { contains: search } },
+            { sku: { contains: search } },
+        ]
     }
 
     const orderBy: any = {}
