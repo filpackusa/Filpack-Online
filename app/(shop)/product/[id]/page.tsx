@@ -5,10 +5,15 @@ import { getProductById } from '@/app/actions';
 import { redirect } from 'next/navigation';
 import ProductDetailClient from './ProductDetailClient';
 
-export default async function ProductDetail({ params }: { params: { id: string } }) {
-    const result = await getProductById(params.id);
+export default async function ProductDetail({ params }: { params: Promise<{ id: string }> }) {
+    const { id } = await params;
+    console.log('[ProductDetail] Product ID from params:', id);
+
+    const result = await getProductById(id);
+    console.log('[ProductDetail] getProductById result:', result.success ? 'SUCCESS' : 'FAILED');
 
     if (!result.success || !result.product) {
+        console.log('[ProductDetail] Redirecting to /products');
         redirect('/products');
     }
 
