@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { Search, ShoppingCart, Menu, X, Phone, Globe } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { useCart } from '@/context/CartContext';
@@ -12,7 +13,16 @@ export default function Navbar() {
   const { language, setLanguage, t } = useLanguage();
   const { cartCount } = useCart();
 
+  const [searchQuery, setSearchQuery] = useState('');
+  const router = useRouter();
 
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      router.push(`/products?search=${encodeURIComponent(searchQuery.trim())}`);
+      setIsMenuOpen(false); // Close mobile menu if open
+    }
+  };
 
   return (
     <header className="glass sticky top-0 z-50 transition-all duration-300">
@@ -70,16 +80,18 @@ export default function Navbar() {
           </Link>
 
           {/* Search Bar - Hidden on mobile */}
-          <div className="hidden md:flex flex-1 max-w-xl relative group">
+          <form onSubmit={handleSearch} className="hidden md:flex flex-1 max-w-xl relative group">
             <input
               type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
               placeholder={t('nav.search')}
               className="w-full px-5 py-3 bg-slate-100/50 border border-transparent rounded-full focus:outline-none focus:bg-white focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all shadow-sm group-hover:bg-white group-hover:shadow-md"
             />
-            <button className="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-orange-500 text-white rounded-full hover:bg-orange-600 transition-colors shadow-lg shadow-orange-500/30">
+            <button type="submit" className="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-orange-500 text-white rounded-full hover:bg-orange-600 transition-colors shadow-lg shadow-orange-500/30">
               <Search size={18} />
             </button>
-          </div>
+          </form>
 
           {/* Actions */}
           <div className="hidden md:flex items-center gap-8">
@@ -120,16 +132,18 @@ export default function Navbar() {
       {isMenuOpen && (
         <div className="md:hidden border-t border-slate-100 bg-white/95 backdrop-blur-md absolute w-full shadow-lg animate-in slide-in-from-top-5">
           <div className="p-4 space-y-4">
-            <div className="relative">
+            <form onSubmit={handleSearch} className="relative">
               <input
                 type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder={t('nav.search')}
                 className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
               />
-              <button className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400">
+              <button type="submit" className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400">
                 <Search size={20} />
               </button>
-            </div>
+            </form>
             <nav className="flex flex-col gap-2 font-medium text-slate-700">
               <Link href="/products" className="px-4 py-3 hover:bg-slate-50 rounded-lg transition-colors">{t('nav.products')}</Link>
               <Link href="/track-order" className="px-4 py-3 hover:bg-slate-50 rounded-lg transition-colors">{t('nav.trackOrder')}</Link>

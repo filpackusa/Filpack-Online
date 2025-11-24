@@ -1,14 +1,18 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Suspense } from 'react';
 import Link from 'next/link';
 import { Filter, ChevronDown } from 'lucide-react';
 import ProductCard from '@/components/ProductCard';
 import { useLanguage } from '@/context/LanguageContext';
 import { getProducts } from '@/app/actions/products';
+import { useSearchParams } from 'next/navigation';
 
-export default function ProductsPage() {
+function ProductsContent() {
     const { t } = useLanguage();
+    const searchParams = useSearchParams();
+    const searchQuery = searchParams.get('search');
+
     const [products, setProducts] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
     const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
@@ -26,7 +30,8 @@ export default function ProductsPage() {
                     sort: sort === t('products.sort.lowestPrice') ? 'lowestPrice' :
                         sort === t('products.sort.highestPrice') ? 'highestPrice' : undefined,
                     minPrice,
-                    maxPrice
+                    maxPrice,
+                    search: searchQuery || undefined
                 });
                 setProducts(fetchedProducts);
             } catch (error) {
@@ -38,18 +43,12 @@ export default function ProductsPage() {
 
         const timeoutId = setTimeout(fetchProducts, 500); // Debounce fetching
         return () => clearTimeout(timeoutId);
-    }, [selectedCategories, sort, t, minPrice, maxPrice]);
+    }, [selectedCategories, sort, t, minPrice, maxPrice, searchQuery]);
 
     const toggleCategory = (catId: string) => {
         setSelectedCategories(prev =>
             prev.includes(catId) ? prev.filter(c => c !== catId) : [catId] // Allow only one category for now to match server action simple logic
         );
-    };
-
-    const categoryMap: { [key: string]: string } = {
-        [t('categories.items.plastic')]: 'plastic',
-        [t('categories.items.bags')]: 'bags',
-        [t('categories.items.netting')]: 'netting'
     };
 
     return (
@@ -170,5 +169,13 @@ export default function ProductsPage() {
                 </div>
             </div>
         </div>
+    );
+}
+
+export default function ProductsPage() {
+    return (
+        <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-32 w-32 border-b-2 border-orange-500"></div></div>}>
+            <ProductsContent />
+        </Suspense>
     );
 }
