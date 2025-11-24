@@ -2,11 +2,10 @@
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import en from '../locales/en.json';
-import tr from '../locales/tr.json';
 import es from '../locales/es.json';
 
-type Language = 'en' | 'tr' | 'es';
-type Translations = typeof en | typeof tr | typeof es;
+type Language = 'en' | 'es';
+type Translations = typeof en | typeof es;
 
 interface LanguageContextType {
     language: Language;
@@ -22,9 +21,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
 
     useEffect(() => {
         // Load translations based on selected language
-        if (language === 'tr') {
-            setTranslations(tr as any);
-        } else if (language === 'es') {
+        if (language === 'es') {
             setTranslations(es as any);
         } else {
             setTranslations(en as any);

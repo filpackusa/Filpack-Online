@@ -48,12 +48,6 @@ export default function Navbar() {
                       <span className="text-xl">🇺🇸</span> English
                     </button>
                     <button
-                      onClick={() => { setLanguage('tr'); setIsLangMenuOpen(false); }}
-                      className={`w-full text-left px-4 py-3 text-sm hover:bg-slate-50 flex items-center gap-3 transition-colors ${language === 'tr' ? 'font-bold text-orange-600 bg-orange-50' : ''}`}
-                    >
-                      <span className="text-xl">🇹🇷</span> Türkçe
-                    </button>
-                    <button
                       onClick={() => { setLanguage('es'); setIsLangMenuOpen(false); }}
                       className={`w-full text-left px-4 py-3 text-sm hover:bg-slate-50 flex items-center gap-3 transition-colors ${language === 'es' ? 'font-bold text-orange-600 bg-orange-50' : ''}`}
                     >
