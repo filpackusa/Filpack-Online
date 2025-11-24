@@ -12,10 +12,10 @@ interface ProductProps {
     price: number;
     category: string;
     rating: number;
-    image?: string;
+    images: string[];
 }
 
-const ProductCard = ({ id, name, price, category, rating, image }: ProductProps) => {
+const ProductCard = ({ id, name, price, category, rating, images }: ProductProps) => {
     const { t } = useLanguage();
     const { addItem } = useCart();
 
@@ -26,7 +26,7 @@ const ProductCard = ({ id, name, price, category, rating, image }: ProductProps)
             name,
             price,
             quantity: 1,
-            image: image || 'bg-slate-100'
+            image: images[0] || 'bg-slate-100'
         });
     };
 
@@ -38,8 +38,8 @@ const ProductCard = ({ id, name, price, category, rating, image }: ProductProps)
                     {category}
                 </div>
                 <div className="w-full h-full flex items-center justify-center text-slate-300 bg-slate-50 group-hover:scale-110 transition-transform duration-700 ease-out">
-                    {image && image.startsWith('http') ? (
-                        <img src={image} alt={name} className="w-full h-full object-cover" />
+                    {images && images.length > 0 && images[0].startsWith('http') ? (
+                        <img src={images[0]} alt={name} className="w-full h-full object-cover" />
                     ) : (
                         <span className="text-4xl font-black opacity-10">IMG</span>
                     )}

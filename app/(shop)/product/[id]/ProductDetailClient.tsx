@@ -12,7 +12,7 @@ interface Product {
     price: number;
     sku: string;
     category: string;
-    image: string | null;
+    images: string[];
     stock: number;
     createdAt: Date;
     updatedAt: Date;
@@ -22,6 +22,14 @@ export default function ProductDetailClient({ product }: { product: Product }) {
     const { t } = useLanguage();
     const { addItem } = useCart();
     const [quantity, setQuantity] = React.useState(1);
+    const [selectedImage, setSelectedImage] = React.useState(product.images[0] || '');
+
+    // Update selected image if product changes
+    React.useEffect(() => {
+        if (product.images && product.images.length > 0) {
+            setSelectedImage(product.images[0]);
+        }
+    }, [product]);
 
     const handleAddToCart = () => {
         addItem({
@@ -29,7 +37,7 @@ export default function ProductDetailClient({ product }: { product: Product }) {
             name: product.name,
             price: product.price,
             quantity: quantity,
-            image: product.image || '/placeholder.jpg'
+            image: product.images[0] || '/placeholder.jpg'
         });
     };
 
@@ -45,12 +53,8 @@ export default function ProductDetailClient({ product }: { product: Product }) {
                     {/* Left: Image Gallery */}
                     <div className="p-8 md:p-12 bg-slate-50/50 border-b md:border-b-0 md:border-r border-slate-100 relative">
                         <div className="aspect-square bg-white rounded-2xl mb-6 flex items-center justify-center relative overflow-hidden group shadow-sm border border-slate-100">
-                            {product.image && product.image.startsWith('http') ? (
-                                <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
-                            ) : product.image ? (
-                                <div className={`w-full h-full ${product.image} flex items-center justify-center`}>
-                                    <span className="text-6xl font-black text-slate-400 opacity-50">IMG</span>
-                                </div>
+                            {selectedImage && selectedImage.startsWith('http') ? (
+                                <img src={selectedImage} alt={product.name} className="w-full h-full object-cover transition-all duration-500" />
                             ) : (
                                 <div className="w-full h-full bg-slate-100 flex items-center justify-center">
                                     <span className="text-6xl font-black text-slate-400 opacity-50">IMG</span>
@@ -65,13 +69,23 @@ export default function ProductDetailClient({ product }: { product: Product }) {
                                 </button>
                             </div>
                         </div>
-                        <div className="grid grid-cols-4 gap-4">
-                            {[1, 2, 3, 4].map((i) => (
-                                <button key={i} className={`aspect-square rounded-xl border-2 flex items-center justify-center bg-white shadow-sm transition-all ${i === 1 ? 'border-orange-500 ring-2 ring-orange-500/20' : 'border-transparent hover:border-slate-200 hover:-translate-y-1'}`}>
-                                    <span className="text-xs text-slate-300 font-bold">{i}</span>
-                                </button>
-                            ))}
-                        </div>
+                        {product.images && product.images.length > 1 && (
+                            <div className="grid grid-cols-4 gap-4">
+                                {product.images.map((img, i) => (
+                                    <button
+                                        key={i}
+                                        onClick={() => setSelectedImage(img)}
+                                        className={`aspect-square rounded-xl border-2 flex items-center justify-center bg-white shadow-sm transition-all overflow-hidden ${selectedImage === img ? 'border-orange-500 ring-2 ring-orange-500/20' : 'border-transparent hover:border-slate-200 hover:-translate-y-1'}`}
+                                    >
+                                        {img.startsWith('http') ? (
+                                            <img src={img} alt={`${product.name} ${i + 1}`} className="w-full h-full object-cover" />
+                                        ) : (
+                                            <span className="text-xs text-slate-300 font-bold">{i + 1}</span>
+                                        )}
+                                    </button>
+                                ))}
+                            </div>
+                        )}
                     </div>
 
                     {/* Right: Product Info */}

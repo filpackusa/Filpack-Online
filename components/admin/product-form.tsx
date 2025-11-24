@@ -13,14 +13,14 @@ interface ProductFormProps {
         sku: string
         category: string
         stock: number
-        image: string | null
+        images: string[]
     }
     action: (formData: FormData) => Promise<void>
     buttonText: string
 }
 
 export default function ProductForm({ initialData, action, buttonText }: ProductFormProps) {
-    const [imageUrl, setImageUrl] = useState(initialData?.image || "")
+    const [imageUrls, setImageUrls] = useState<string[]>(initialData?.images || [])
     const router = useRouter()
 
     return (
@@ -34,10 +34,10 @@ export default function ProductForm({ initialData, action, buttonText }: Product
                         Product Images
                     </label>
                     <ImageUpload
-                        value={imageUrl}
-                        onChange={(url) => setImageUrl(url)}
+                        value={imageUrls}
+                        onChange={(urls) => setImageUrls(urls)}
                     />
-                    <input type="hidden" name="image" value={imageUrl} />
+                    <input type="hidden" name="images" value={JSON.stringify(imageUrls)} />
                 </div>
 
                 <div className="col-span-2">

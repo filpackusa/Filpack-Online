@@ -14,7 +14,7 @@ model Product {
   price       Float
   sku         String      @unique
   category    String
-  image       String?
+  images      String[]
   stock       Int         @default(100)
   createdAt   DateTime    @default(now())
   updatedAt   DateTime    @updatedAt
