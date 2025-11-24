@@ -149,11 +149,21 @@ function ProductsContent() {
                                     <div key={i} className="bg-white h-80 rounded-xl animate-pulse"></div>
                                 ))}
                             </div>
-                        ) : (
+                        ) : products.length > 0 ? (
                             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                                 {products.map((product) => (
                                     <ProductCard key={product.id} {...product} />
                                 ))}
+                            </div>
+                        ) : (
+                            <div className="text-center py-12 bg-slate-50 rounded-xl border border-slate-100">
+                                <p className="text-slate-500 text-lg font-medium">{t('products.noProductsFound')}</p>
+                                <button
+                                    onClick={() => window.location.href = '/products'}
+                                    className="mt-4 text-orange-600 hover:text-orange-700 font-medium"
+                                >
+                                    {t('products.clearFilters')}
+                                </button>
                             </div>
                         )}
 

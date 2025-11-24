@@ -104,8 +104,8 @@ export async function getProducts(filters?: {
 
     if (search) {
         where.OR = [
-            { name: { contains: search } },
-            { sku: { contains: search } },
+            { name: { contains: search, mode: 'insensitive' } },
+            { sku: { contains: search, mode: 'insensitive' } },
         ]
     }
 
