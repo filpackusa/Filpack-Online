@@ -87,7 +87,9 @@
         "items": {
             "burgerBox": "Kraft Hamburger Box (100 pcs)",
             "saladBowl": "Clear Salad Bowl 750ml"
-        }
+        },
+        "noProductsFound": "No products found.",
+        "clearFilters": "Clear Filters"
     },
     "checkout": {
         "steps": {

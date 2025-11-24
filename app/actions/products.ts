@@ -103,10 +103,13 @@ export async function getProducts(filters?: {
     }
 
     if (search) {
-        where.OR = [
-            { name: { contains: search, mode: 'insensitive' } },
-            { sku: { contains: search, mode: 'insensitive' } },
-        ]
+        const searchTerms = search.trim().split(/\s+/);
+        where.AND = searchTerms.map(term => ({
+            OR: [
+                { name: { contains: term, mode: 'insensitive' } },
+                { sku: { contains: term, mode: 'insensitive' } },
+            ]
+        }));
     }
 
     const orderBy: any = {}

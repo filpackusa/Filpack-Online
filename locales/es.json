@@ -87,7 +87,9 @@
         "items": {
             "burgerBox": "Caja de Hamburguesa Kraft (100 pzs)",
             "saladBowl": "Ensaladera Transparente 750ml"
-        }
+        },
+        "noProductsFound": "No se encontraron productos.",
+        "clearFilters": "Borrar Filtros"
     },
     "checkout": {
         "steps": {
