@@ -1,0 +1,74 @@
+[
+    {
+        "id": "cmi5re8xu0001ry8qvsln9ts8",
+        "name": "Stretch Film",
+        "description": "FILPACK, a leading manufacturer in the industry, produces PE (Polyethylene) Stretch Film, a versatile packaging material widely utilized across various sectors for the secure and efficient transportation and storage of goods",
+        "price": 33.60,
+        "sku": "FLP-1003",
+        "category": "stretch-film",
+        "image": "https://res.cloudinary.com/dq0yympem/image/upload/v1763629291/md9uohxva9ztdxjrvfis.png",
+        "stock": 1500,
+        "createdAt": 1763542037442,
+        "updatedAt": 1763646163559
+    },
+    {
+        "id": "cmi5re8xw0002ry8qgsbxobxq",
+        "name": "Red Mesh Net",
+        "description": "Tube net is a type of packaging material used in the packaging industry, typically made of plastic or other materials that can be stretched into a tubular shape. It is commonly used to package fresh produce such as fruits and vegetables, as well as nuts and dried pulses. Tube net can be easily wrapped around the produce, providing protection during transportation and storage, while also allowing air circulation to keep the produce fresh. Its flexibility and durability make it a popular choice in the packaging industry for a wide range of products",
+        "price": 39.25,
+        "sku": "FLP-1002",
+        "category": "netting",
+        "image": "https://res.cloudinary.com/dq0yympem/image/upload/v1763629414/x20pmzjqqcccag7tflqg.png",
+        "stock": 1000,
+        "createdAt": 1763542037444,
+        "updatedAt": 1763645034325
+    },
+    {
+        "id": "cmi5re8xy0003ry8qdjkuc7nm",
+        "name": "Pallet Net Wrap",
+        "description": "The standard prodcut line of Filpack pallet netting is an efficient and cost effective solution.",
+        "price": 76.85,
+        "sku": "FLP-1001",
+        "category": "netting",
+        "image": "https://res.cloudinary.com/dq0yympem/image/upload/v1763629355/r0hhva7q5nj6m4olnp6d.png",
+        "stock": 3000,
+        "createdAt": 1763542037446,
+        "updatedAt": 1763645025118
+    },
+    {
+        "id": "cmi8nzuwl0000rya9r0kgt0c3",
+        "name": "B Series Meat Net",
+        "description": "A multipurpose elastic net, suitable for the packaging of roasted, smoked and boiled meat (turkey, chicken, beef, pork, lamp) applications. Their construction guarantees consistency, withstanding extreme roasting temperatures. They are made from cotton or polyester yarns and natural food grade rubber threads.",
+        "price": 56.65,
+        "sku": "FLP-1004",
+        "category": "netting",
+        "image": "https://res.cloudinary.com/dq0yympem/image/upload/v1763717684/ve1jtpjhq60auzvjcy6m.png",
+        "stock": 1000,
+        "createdAt": 1763717725749,
+        "updatedAt": 1763717745023
+    },
+    {
+        "id": "cmi8o2qju0001rya98b23gk1f",
+        "name": "Bale Netwrap",
+        "description": "FILPACK Bale Netwrap is manufactured with state-of-the-art Raw Materials and a unique manufacturing process which makes it the best solutions for trouble free baling. Recognized by Farmers and Contractors worldwide, has proven to consistently deliver all the performance criteria a farmer or contractor demand.\r\n\r\nFILPACK Bale Netwrap is subject to regular DLG monitoring tests which is performed on all saleable balers worldwide as well as checked for technical specifications requirements. More exact details you will find in our DLG-accredited report www.dlg-test.de\r\n\r\nIt provides with full, consistent and uniform bale coverage while achieving a fast baling process. It is suitable for all crops (silage, hay, straw, cornstalk, maize) and works under all weather conditions.",
+        "price": 72.34,
+        "sku": "FLP-1005",
+        "category": "netting",
+        "image": "https://res.cloudinary.com/dq0yympem/image/upload/v1763717907/tyieaynfoo8nywudfceb.png",
+        "stock": 1000,
+        "createdAt": 1763717860074,
+        "updatedAt": 1763717912327
+    },
+    {
+        "id": "cmi8o6hjt0002rya9ew4w2ecp",
+        "name": "Silage Net Cover",
+        "description": "Probably one of the best solutions – Filpack Silage net cover.\r\n\r\nIt turned out to be a great technique to store silage directly on the field. To keep it safe from insects, bird and animals it is helpful to use silage net. FILPACK silage net cover keeps the forage perfect. It is an impenetrable barrier for picking birds and other small animals because of its strong and resistant mesh.\r\n\r\nOur silage net Cover is easy to use, economical and keeps the forage safe. With one roll of our silage net (8 x 25 m) you can cover at least 150 bales of fodder. The value of fodder can be worth up to 5,000 Euro. Leaving the bales unprotected could raise the possibility of damage by birds. This could mean hundreds of Euro destroyed. Our silage net is a good investment in safety – it repays itself. With only a few cent per bale it is cheap compared to the value of a lost fodder bale.\r\n\r\nSilage net Cover is UV stabilized, useable for many years and high flexible.\r\nWe only use premium grade raw materials to fulfi l high technical demands. Our silage net has the standard size of 8 x 25 m, other sizes are available on request. Silage net Cover is wrapped and folded on a core, packed in foil to make handling and shipping easier.",
+        "price": 71.68,
+        "sku": "FLP-1006",
+        "category": "netting",
+        "image": "https://res.cloudinary.com/dq0yympem/image/upload/v1763717921/fy1kfilba9nm1nbiyugm.png",
+        "stock": 1000,
+        "createdAt": 1763718035033,
+        "updatedAt": 1763718035033
+    }
+]

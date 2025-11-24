@@ -112,3 +112,20 @@ export async function updateProduct(id: string, price: number, stock: number) {
         return { success: false, error };
     }
 }
+
+export async function getProductById(id: string) {
+    try {
+        const product = await prisma.product.findUnique({
+            where: { id },
+        });
+
+        if (!product) {
+            return { success: false, error: 'Product not found' };
+        }
+
+        return { success: true, product };
+    } catch (error) {
+        return { success: false, error };
+    }
+}
+
