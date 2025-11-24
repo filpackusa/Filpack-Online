@@ -12,7 +12,7 @@ interface Product {
     price: number;
     sku: string;
     category: string;
-    image: string;
+    image: string | null;
     stock: number;
     createdAt: Date;
     updatedAt: Date;
@@ -29,7 +29,7 @@ export default function ProductDetailClient({ product }: { product: Product }) {
             name: product.name,
             price: product.price,
             quantity: quantity,
-            image: product.image
+            image: product.image || '/placeholder.jpg'
         });
     };
 
@@ -45,10 +45,14 @@ export default function ProductDetailClient({ product }: { product: Product }) {
                     {/* Left: Image Gallery */}
                     <div className="p-8 md:p-12 bg-slate-50/50 border-b md:border-b-0 md:border-r border-slate-100 relative">
                         <div className="aspect-square bg-white rounded-2xl mb-6 flex items-center justify-center relative overflow-hidden group shadow-sm border border-slate-100">
-                            {product.image.startsWith('http') ? (
+                            {product.image && product.image.startsWith('http') ? (
                                 <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
-                            ) : (
+                            ) : product.image ? (
                                 <div className={`w-full h-full ${product.image} flex items-center justify-center`}>
+                                    <span className="text-6xl font-black text-slate-400 opacity-50">IMG</span>
+                                </div>
+                            ) : (
+                                <div className="w-full h-full bg-slate-100 flex items-center justify-center">
                                     <span className="text-6xl font-black text-slate-400 opacity-50">IMG</span>
                                 </div>
                             )}
