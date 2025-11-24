@@ -113,17 +113,21 @@ export async function updateProduct(id: string, price: number, stock: number) {
 
 export async function getProductById(id: string) {
     try {
+        console.log('[getProductById] Fetching product with ID:', id);
         const product = await prisma.product.findUnique({
             where: { id },
         });
 
+        console.log('[getProductById] Product found:', product ? 'YES' : 'NO');
+
         if (!product) {
+            console.log('[getProductById] Product not found for ID:', id);
             return { success: false, error: 'Product not found' };
         }
 
         return { success: true, product };
     } catch (error) {
+        console.error('[getProductById] Error:', error);
         return { success: false, error };
     }
 }
-
