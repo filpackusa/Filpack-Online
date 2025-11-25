@@ -55,9 +55,46 @@ export default function ProductDetailClient({ product }: { product: Product }) {
     const rating = 4.8;
     const reviews = 124;
 
+    // Product structured data for SEO
+    const productSchema = {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": product.name,
+        "description": product.description,
+        "image": product.images.filter(img => img.startsWith('http')),
+        "sku": product.sku,
+        "brand": {
+            "@type": "Brand",
+            "name": "Filpack Online"
+        },
+        "offers": {
+            "@type": "Offer",
+            "url": `https://filpackonline.com/product/${product.id}`,
+            "priceCurrency": "USD",
+            "price": product.price,
+            "availability": product.stock > 0 ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
+            "seller": {
+                "@type": "Organization",
+                "name": "Filpack Online"
+            }
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": rating,
+            "reviewCount": reviews
+        }
+    };
+
+
+
     return (
         <div className="container mx-auto px-4 py-12">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+            />
             <div className="bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden mb-12">
+
                 <div className="grid md:grid-cols-2 gap-0">
 
                     {/* Left: Image Gallery */}

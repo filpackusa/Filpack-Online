@@ -16,8 +16,70 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Filpack Online - Gıda Ambalaj Çözümleri",
-  description: "Amerika'nın güvenilir gıda ambalaj tedarikçisi. Plastik kaplar, kağıt kutular ve daha fazlası.",
+  metadataBase: new URL('https://filpackonline.com'),
+  title: {
+    default: 'Filpack Online - Professional Food Packaging Solutions',
+    template: '%s | Filpack Online',
+  },
+  description: 'America\'s trusted food packaging supplier. High-quality plastic containers, eco-friendly paper boxes, and comprehensive packaging solutions for the food industry.',
+  keywords: [
+    'food packaging',
+    'plastic containers',
+    'paper boxes',
+    'food service packaging',
+    'takeout containers',
+    'disposable packaging',
+    'eco-friendly packaging',
+    'restaurant supplies',
+    'food packaging USA',
+    'wholesale packaging',
+  ],
+  authors: [{ name: 'Filpack Ambalaj San. Tic. Ltd. Şti.' }],
+  creator: 'Filpack Online',
+  publisher: 'Filpack Online',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://filpackonline.com',
+    siteName: 'Filpack Online',
+    title: 'Filpack Online - Professional Food Packaging Solutions',
+    description: 'America\'s trusted food packaging supplier. High-quality plastic containers, eco-friendly paper boxes, and comprehensive packaging solutions.',
+    images: [
+      {
+        url: '/logo.png',
+        width: 1200,
+        height: 630,
+        alt: 'Filpack Online Logo',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Filpack Online - Professional Food Packaging Solutions',
+    description: 'America\'s trusted food packaging supplier. High-quality plastic containers and eco-friendly paper boxes.',
+    images: ['/logo.png'],
+    creator: '@filpackonline',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    google: 'your-google-verification-code',
+    yandex: 'your-yandex-verification-code',
+  },
 };
 
 export default function RootLayout({
