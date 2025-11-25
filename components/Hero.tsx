@@ -41,9 +41,9 @@ export default function Hero() {
                             {t('hero.shopNow')}
                             <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                         </Link>
-                        <button className="bg-white/5 hover:bg-white/10 text-white px-8 py-4 rounded-full font-bold text-lg transition-all backdrop-blur-sm border border-white/10 hover:border-white/20">
+                        <a href="/contact" className="bg-white/5 hover:bg-white/10 text-white px-8 py-4 rounded-full font-bold text-lg transition-all backdrop-blur-sm border border-white/10 hover:border-white/20">
                             {t('hero.getQuote')}
-                        </button>
+                        </a>
                     </div>
 
                     <div className="mt-16 pt-8 border-t border-white/5 flex flex-wrap justify-center gap-8 md:gap-16 text-sm font-medium text-slate-400 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-500">
