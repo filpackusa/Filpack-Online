@@ -54,6 +54,8 @@
         "shipping": "Ships in 24 Hours",
         "minOrder": "(Min. order: 1 pack)",
         "addToCart": "Add to Cart",
+        "addedToCart": "Added to cart!",
+        "addToCartError": "Failed to add to cart. Please try again.",
         "securePayment": "Secure Payment",
         "returnPolicy": "30 Days Return",
         "specs": "Specifications",

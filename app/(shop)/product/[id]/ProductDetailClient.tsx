@@ -23,6 +23,7 @@ export default function ProductDetailClient({ product }: { product: Product }) {
     const { addItem } = useCart();
     const [quantity, setQuantity] = React.useState(1);
     const [selectedImage, setSelectedImage] = React.useState(product.images[0] || '');
+    const [showAddedMessage, setShowAddedMessage] = React.useState(false);
 
     // Update selected image if product changes
     React.useEffect(() => {
@@ -32,13 +33,22 @@ export default function ProductDetailClient({ product }: { product: Product }) {
     }, [product]);
 
     const handleAddToCart = () => {
-        addItem({
-            id: product.id,
-            name: product.name,
-            price: product.price,
-            quantity: quantity,
-            image: product.images[0] || '/placeholder.jpg'
-        });
+        try {
+            addItem({
+                id: product.id,
+                name: product.name,
+                price: product.price,
+                quantity: quantity,
+                image: product.images[0] || '/placeholder.jpg'
+            });
+
+            // Show success message
+            setShowAddedMessage(true);
+            setTimeout(() => setShowAddedMessage(false), 3000);
+        } catch (error) {
+            console.error('Failed to add item to cart', error);
+            alert(t('productDetail.addToCartError') || 'Failed to add item to cart. Please try again.');
+        }
     };
 
     // Mock rating data (you can add this to the database later)
@@ -146,6 +156,15 @@ export default function ProductDetailClient({ product }: { product: Product }) {
                                         className="w-12 h-12 flex items-center justify-center hover:bg-white rounded-lg text-slate-600 transition-all shadow-sm hover:shadow"
                                     ><Plus size={20} /></button>
                                 </div>
+
+                                {/* Success Message */}
+                                {showAddedMessage && (
+                                    <div className="bg-green-50 border-2 border-green-500 text-green-700 px-4 py-3 rounded-xl flex items-center gap-2 animate-in fade-in slide-in-from-top-2">
+                                        <ShoppingCart size={20} className="text-green-600" />
+                                        <span className="font-bold">{t('productDetail.addedToCart') || 'Added to cart!'}</span>
+                                    </div>
+                                )}
+
                                 <button
                                     onClick={handleAddToCart}
                                     disabled={product.stock < 1}

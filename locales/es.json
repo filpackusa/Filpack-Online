@@ -54,6 +54,8 @@
         "shipping": "Envío en 24 Horas",
         "minOrder": "(Pedido Mínimo: 1 paquete)",
         "addToCart": "Agregar al Carrito",
+        "addedToCart": "¡Agregado al carrito!",
+        "addToCartError": "Error al agregar al carrito. Inténtalo de nuevo.",
         "securePayment": "Pago Seguro",
         "returnPolicy": "Devolución en 30 Días",
         "specs": "Especificaciones",

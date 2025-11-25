@@ -54,6 +54,8 @@
         "shipping": "24 Saatte Kargo",
         "minOrder": "(Min. sipariş: 1 paket)",
         "addToCart": "Sepete Ekle",
+        "addedToCart": "Sepete eklendi!",
+        "addToCartError": "Sepete eklenemedi. Lütfen tekrar deneyin.",
         "securePayment": "Güvenli Ödeme",
         "returnPolicy": "30 Gün İade",
         "specs": "Teknik Özellikler",

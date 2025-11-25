@@ -25,23 +25,45 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
     const [items, setItems] = useState<CartItem[]>([]);
+    const [isLocalStorageAvailable, setIsLocalStorageAvailable] = useState(true);
 
-    // Load cart from localStorage on mount
+    // Check if localStorage is available (fails in iOS Safari private browsing)
     useEffect(() => {
-        const savedCart = localStorage.getItem('cart');
-        if (savedCart) {
-            try {
-                setItems(JSON.parse(savedCart));
-            } catch (e) {
-                console.error('Failed to parse cart from localStorage', e);
-            }
+        try {
+            const test = '__localStorage_test__';
+            localStorage.setItem(test, test);
+            localStorage.removeItem(test);
+            setIsLocalStorageAvailable(true);
+        } catch (e) {
+            console.warn('localStorage is not available, cart will not persist across sessions', e);
+            setIsLocalStorageAvailable(false);
         }
     }, []);
 
+    // Load cart from localStorage on mount
+    useEffect(() => {
+        if (!isLocalStorageAvailable) return;
+
+        try {
+            const savedCart = localStorage.getItem('cart');
+            if (savedCart) {
+                setItems(JSON.parse(savedCart));
+            }
+        } catch (e) {
+            console.error('Failed to load cart from localStorage', e);
+        }
+    }, [isLocalStorageAvailable]);
+
     // Save cart to localStorage whenever it changes
     useEffect(() => {
-        localStorage.setItem('cart', JSON.stringify(items));
-    }, [items]);
+        if (!isLocalStorageAvailable) return;
+
+        try {
+            localStorage.setItem('cart', JSON.stringify(items));
+        } catch (e) {
+            console.error('Failed to save cart to localStorage', e);
+        }
+    }, [items, isLocalStorageAvailable]);
 
     const addItem = (newItem: CartItem) => {
         setItems((prevItems) => {
