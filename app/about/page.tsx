@@ -50,9 +50,8 @@ export default function AboutPage() {
                     <section className="mb-12">
                         <h2 className="text-3xl font-bold text-slate-900 mb-6">Our Mission</h2>
                         <div className="bg-white rounded-lg shadow-sm p-8 border border-slate-200">
-                            <p className="text-slate-700 leading-relaxed">
-                                {/* Content will be added here */}
-                                Our mission is to provide high-quality, sustainable packaging solutions for the food industry.
+                            <p className="text-slate-700 leading-relaxed text-lg">
+                                Our mission is to consistently meet the highest standards of quality while exceeding customer expectations. We embrace an innovative approach and assume the responsibility of being a leading brand in the industry. As a result, we ensure the sustainable success of our brand on a global scale.
                             </p>
                         </div>
                     </section>
