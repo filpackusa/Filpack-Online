@@ -17,7 +17,10 @@ export default async function ProductDetail({ params }: { params: Promise<{ id: 
         redirect('/products');
     }
 
-    const product = result.product;
+    const product = {
+        ...result.product,
+        priceTiers: result.product.priceTiers as any
+    };
 
     return (
         <div className="min-h-screen pb-20">
