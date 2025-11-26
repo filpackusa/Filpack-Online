@@ -8,10 +8,10 @@ export default function AboutPage() {
     return (
         <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
             {/* Hero Section */}
-            <div className="bg-gradient-to-r from-orange-500 to-orange-600 text-white py-20">
+            <div className="bg-gradient-to-r from-blue-500 to-blue-600 text-white py-20">
                 <div className="container mx-auto px-4">
                     <h1 className="text-5xl font-bold mb-4">About Us</h1>
-                    <p className="text-xl text-orange-100">Learn more about Filpack Online</p>
+                    <p className="text-xl text-blue-100">Learn more about Filpack Online</p>
                 </div>
             </div>
 
@@ -23,7 +23,7 @@ export default function AboutPage() {
                         <h2 className="text-3xl font-bold text-slate-900 mb-6">Who We Are</h2>
                         <div className="bg-white rounded-lg shadow-sm p-8 border border-slate-200 space-y-4">
                             <p className="text-slate-700 leading-relaxed">
-                                <strong className="text-orange-600">FILPACK USA INC.</strong> was established in 2023 to introduce its European-produced products to the North American market. The company began with the production of netting for fresh produce and later expanded its portfolio to include a wide range of products, from barrier films to fully automatic packaging machines.
+                                <strong className="text-blue-600">FILPACK USA INC.</strong> was established in 2023 to introduce its European-produced products to the North American market. The company began with the production of netting for fresh produce and later expanded its portfolio to include a wide range of products, from barrier films to fully automatic packaging machines.
                             </p>
                             <p className="text-slate-700 leading-relaxed">
                                 Operating in the plastic packaging sector, Filpack manufactures polyethylene-based net packaging products using advanced technology.
@@ -61,28 +61,28 @@ export default function AboutPage() {
                         <h2 className="text-3xl font-bold text-slate-900 mb-6">Our Values</h2>
                         <div className="grid md:grid-cols-2 gap-6">
                             <div className="bg-white rounded-lg shadow-sm p-6 border border-slate-200">
-                                <h3 className="text-xl font-bold text-orange-600 mb-3">Quality</h3>
+                                <h3 className="text-xl font-bold text-blue-600 mb-3">Quality</h3>
                                 <p className="text-slate-700">
                                     {/* Content will be added here */}
                                     We never compromise on quality.
                                 </p>
                             </div>
                             <div className="bg-white rounded-lg shadow-sm p-6 border border-slate-200">
-                                <h3 className="text-xl font-bold text-orange-600 mb-3">Sustainability</h3>
+                                <h3 className="text-xl font-bold text-blue-600 mb-3">Sustainability</h3>
                                 <p className="text-slate-700">
                                     {/* Content will be added here */}
                                     Eco-friendly solutions for a better future.
                                 </p>
                             </div>
                             <div className="bg-white rounded-lg shadow-sm p-6 border border-slate-200">
-                                <h3 className="text-xl font-bold text-orange-600 mb-3">Innovation</h3>
+                                <h3 className="text-xl font-bold text-blue-600 mb-3">Innovation</h3>
                                 <p className="text-slate-700">
                                     {/* Content will be added here */}
                                     Constantly improving our products.
                                 </p>
                             </div>
                             <div className="bg-white rounded-lg shadow-sm p-6 border border-slate-200">
-                                <h3 className="text-xl font-bold text-orange-600 mb-3">Customer Focus</h3>
+                                <h3 className="text-xl font-bold text-blue-600 mb-3">Customer Focus</h3>
                                 <p className="text-slate-700">
                                     {/* Content will be added here */}
                                     Your success is our priority.
@@ -92,14 +92,14 @@ export default function AboutPage() {
                     </section>
 
                     {/* Contact CTA */}
-                    <section className="bg-gradient-to-r from-orange-500 to-orange-600 rounded-lg p-8 text-white text-center">
+                    <section className="bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg p-8 text-white text-center">
                         <h2 className="text-3xl font-bold mb-4">Ready to Work Together?</h2>
-                        <p className="text-orange-100 mb-6">
+                        <p className="text-blue-100 mb-6">
                             Contact us today to discuss your packaging needs.
                         </p>
                         <a
                             href="/contact"
-                            className="inline-block bg-white text-orange-600 font-bold py-3 px-8 rounded-lg hover:bg-orange-50 transition-colors"
+                            className="inline-block bg-white text-blue-600 font-bold py-3 px-8 rounded-lg hover:bg-blue-50 transition-colors"
                         >
                             Get in Touch
                         </a>
