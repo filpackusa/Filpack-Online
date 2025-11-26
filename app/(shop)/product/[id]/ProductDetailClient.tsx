@@ -5,6 +5,11 @@ import { Star, ShoppingCart, ShieldCheck, Truck, RefreshCw, Minus, Plus, Heart, 
 import { useLanguage } from '@/context/LanguageContext';
 import { useCart } from '@/context/CartContext';
 
+interface PriceTier {
+    minQty: number;
+    price: number;
+}
+
 interface Product {
     id: string;
     name: string;
@@ -14,6 +19,7 @@ interface Product {
     category: string;
     images: string[];
     stock: number;
+    priceTiers?: PriceTier[];
     createdAt: Date;
     updatedAt: Date;
 }
@@ -24,6 +30,28 @@ export default function ProductDetailClient({ product }: { product: Product }) {
     const [quantity, setQuantity] = React.useState(1);
     const [selectedImage, setSelectedImage] = React.useState(product.images[0] || '');
     const [showAddedMessage, setShowAddedMessage] = React.useState(false);
+
+    // Calculate price based on quantity and tiers
+    const getCurrentPrice = () => {
+        if (!product.priceTiers || product.priceTiers.length === 0) {
+            return product.price;
+        }
+
+        // Sort tiers by minQty descending
+        const sortedTiers = [...product.priceTiers].sort((a, b) => b.minQty - a.minQty);
+
+        // Find the applicable tier
+        for (const tier of sortedTiers) {
+            if (quantity >= tier.minQty) {
+                return tier.price;
+            }
+        }
+
+        return product.price;
+    };
+
+    const currentPrice = getCurrentPrice();
+    const totalPrice = currentPrice * quantity;
 
     // Update selected image if product changes
     React.useEffect(() => {
@@ -163,17 +191,66 @@ export default function ProductDetailClient({ product }: { product: Product }) {
                             </a>
                         </div>
 
-                        <div className="mb-10 p-6 bg-slate-50 rounded-2xl border border-slate-100">
-                            <div className="flex items-end gap-3 mb-3">
-                                <span className="text-5xl font-black text-slate-900 tracking-tighter">${product.price?.toFixed(2)}</span>
-                                <span className="text-slate-500 mb-2 font-medium">{t('productDetail.perPack')}</span>
+                        {/* Pricing Section */}
+                        {product.priceTiers && product.priceTiers.length > 0 ? (
+                            <div className="mb-10">
+                                <h3 className="text-lg font-bold text-slate-900 mb-4">Quantity-Based Pricing</h3>
+                                <div className="overflow-hidden rounded-2xl border border-slate-200">
+                                    <table className="w-full">
+                                        <thead className="bg-slate-50">
+                                            <tr>
+                                                <th className="px-6 py-3 text-left text-sm font-bold text-slate-700">Quantity</th>
+                                                <th className="px-6 py-3 text-right text-sm font-bold text-slate-700">Price per Unit</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody className="bg-white divide-y divide-slate-100">
+                                            {product.priceTiers
+                                                .sort((a, b) => a.minQty - b.minQty)
+                                                .map((tier, index, array) => (
+                                                    <tr
+                                                        key={index}
+                                                        className={quantity >= tier.minQty ? 'bg-blue-50 border-l-4 border-l-blue-500' : ''}
+                                                    >
+                                                        <td className="px-6 py-4 text-sm text-slate-700">
+                                                            {tier.minQty}
+                                                            {index < array.length - 1 ? ` - ${array[index + 1].minQty - 1}` : '+'}
+                                                        </td>
+                                                        <td className="px-6 py-4 text-right">
+                                                            <span className={`text-lg font-bold ${quantity >= tier.minQty ? 'text-blue-600' : 'text-slate-900'}`}>
+                                                                ${tier.price.toFixed(2)}
+                                                            </span>
+                                                        </td>
+                                                    </tr>
+                                                ))}
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                {/* Current Price Display */}
+                                <div className="mt-6 p-6 bg-slate-50 rounded-2xl border border-slate-100">
+                                    <div className="flex items-end gap-3 mb-3">
+                                        <span className="text-5xl font-black text-slate-900 tracking-tighter">${currentPrice.toFixed(2)}</span>
+                                        <span className="text-slate-500 mb-2 font-medium">per unit</span>
+                                    </div>
+                                    <div className="flex items-baseline gap-2">
+                                        <span className="text-2xl font-bold text-blue-600">${totalPrice.toFixed(2)}</span>
+                                        <span className="text-slate-500 text-sm">total for {quantity} unit{quantity > 1 ? 's' : ''}</span>
+                                    </div>
+                                </div>
                             </div>
-                            <p className="text-sm text-green-600 font-bold flex items-center gap-2">
-                                <Truck size={18} />
-                                <span>{t('productDetail.shipping')}</span>
-                                <span className="text-slate-400 font-normal ml-1">• {t('productDetail.minOrder')}</span>
-                            </p>
-                        </div>
+                        ) : (
+                            <div className="mb-10 p-6 bg-slate-50 rounded-2xl border border-slate-100">
+                                <div className="flex items-end gap-3 mb-3">
+                                    <span className="text-5xl font-black text-slate-900 tracking-tighter">${product.price?.toFixed(2)}</span>
+                                    <span className="text-slate-500 mb-2 font-medium">{t('productDetail.perPack')}</span>
+                                </div>
+                                <p className="text-sm text-green-600 font-bold flex items-center gap-2">
+                                    <Truck size={18} />
+                                    <span>{t('productDetail.shipping')}</span>
+                                    <span className="text-slate-400 font-normal ml-1">• {t('productDetail.minOrder')}</span>
+                                </p>
+                            </div>
+                        )}
 
                         <p className="text-slate-600 mb-10 leading-relaxed text-lg">
                             {product.description}

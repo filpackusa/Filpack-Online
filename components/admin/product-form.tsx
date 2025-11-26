@@ -4,6 +4,12 @@ import { useState } from "react"
 import ImageUpload from "@/components/ui/image-upload"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
+import { Plus, Trash2 } from "lucide-react"
+
+interface PriceTier {
+    minQty: number
+    price: number
+}
 
 interface ProductFormProps {
     initialData?: {
@@ -14,6 +20,7 @@ interface ProductFormProps {
         category: string
         stock: number
         images: string[]
+        priceTiers?: PriceTier[]
     }
     action: (formData: FormData) => Promise<void>
     buttonText: string
@@ -21,7 +28,22 @@ interface ProductFormProps {
 
 export default function ProductForm({ initialData, action, buttonText }: ProductFormProps) {
     const [imageUrls, setImageUrls] = useState<string[]>(initialData?.images || [])
+    const [priceTiers, setPriceTiers] = useState<PriceTier[]>(initialData?.priceTiers || [])
     const router = useRouter()
+
+    const addTier = () => {
+        setPriceTiers([...priceTiers, { minQty: 1, price: 0 }])
+    }
+
+    const removeTier = (index: number) => {
+        setPriceTiers(priceTiers.filter((_, i) => i !== index))
+    }
+
+    const updateTier = (index: number, field: 'minQty' | 'price', value: number) => {
+        const newTiers = [...priceTiers]
+        newTiers[index][field] = value
+        setPriceTiers(newTiers)
+    }
 
     return (
         <form action={async (formData) => {
@@ -120,6 +142,64 @@ export default function ProductForm({ initialData, action, buttonText }: Product
                         defaultValue={initialData?.description}
                         className="block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500"
                     />
+                </div>
+
+                {/* Price Tiers Section */}
+                <div className="col-span-2">
+                    <div className="flex items-center justify-between mb-4">
+                        <label className="block text-sm font-medium text-gray-700">
+                            Quantity-Based Pricing (Optional)
+                        </label>
+                        <button
+                            type="button"
+                            onClick={addTier}
+                            className="flex items-center gap-2 px-3 py-1.5 text-sm bg-blue-50 text-blue-600 rounded-md hover:bg-blue-100"
+                        >
+                            <Plus size={16} />
+                            Add Tier
+                        </button>
+                    </div>
+
+                    {priceTiers.length > 0 && (
+                        <div className="space-y-3 p-4 bg-gray-50 rounded-lg">
+                            {priceTiers.map((tier, index) => (
+                                <div key={index} className="flex gap-3 items-center bg-white p-3 rounded-md border border-gray-200">
+                                    <div className="flex-1">
+                                        <label className="block text-xs text-gray-600 mb-1">Min Quantity</label>
+                                        <input
+                                            type="number"
+                                            min="1"
+                                            value={tier.minQty}
+                                            onChange={(e) => updateTier(index, 'minQty', parseInt(e.target.value) || 1)}
+                                            className="block w-full rounded-md border border-gray-300 px-3 py-2 text-sm"
+                                        />
+                                    </div>
+                                    <div className="flex-1">
+                                        <label className="block text-xs text-gray-600 mb-1">Price ($)</label>
+                                        <input
+                                            type="number"
+                                            step="0.01"
+                                            min="0"
+                                            value={tier.price}
+                                            onChange={(e) => updateTier(index, 'price', parseFloat(e.target.value) || 0)}
+                                            className="block w-full rounded-md border border-gray-300 px-3 py-2 text-sm"
+                                        />
+                                    </div>
+                                    <button
+                                        type="button"
+                                        onClick={() => removeTier(index)}
+                                        className="mt-5 p-2 text-red-600 hover:bg-red-50 rounded-md"
+                                    >
+                                        <Trash2 size={18} />
+                                    </button>
+                                </div>
+                            ))}
+                        </div>
+                    )}
+                    <input type="hidden" name="priceTiers" value={JSON.stringify(priceTiers)} />
+                    <p className="mt-2 text-xs text-gray-500">
+                        Add pricing tiers based on quantity. Example: 1-3 units = $120, 4-7 units = $114, 8+ units = $108
+                    </p>
                 </div>
             </div>
 
