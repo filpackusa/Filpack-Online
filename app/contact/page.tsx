@@ -2,20 +2,34 @@
 
 import React, { useState } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
+import { sendContactEmail } from '@/app/actions/contact';
 
 export default function ContactPage() {
     const { t } = useLanguage();
     const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+    const [loading, setLoading] = useState(false);
+    const [status, setStatus] = useState<{ type: 'success' | 'error' | null; message: string }>({ type: null, message: '' });
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: value }));
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        alert('Quote request submitted! We will contact you soon.');
-        setFormData({ name: '', email: '', message: '' });
+        setLoading(true);
+        setStatus({ type: null, message: '' });
+
+        const result = await sendContactEmail(formData);
+
+        if (result.success) {
+            setStatus({ type: 'success', message: 'Thank you! We will contact you soon.' });
+            setFormData({ name: '', email: '', message: '' });
+        } else {
+            setStatus({ type: 'error', message: 'Failed to send message. Please try again.' });
+        }
+
+        setLoading(false);
     };
 
     return (
@@ -50,11 +64,19 @@ export default function ContactPage() {
                     className="w-full px-4 py-3 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
                     required
                 />
+
+                {status.type && (
+                    <div className={`p-4 rounded-lg ${status.type === 'success' ? 'bg-green-50 text-green-800 border border-green-200' : 'bg-red-50 text-red-800 border border-red-200'}`}>
+                        {status.message}
+                    </div>
+                )}
+
                 <button
                     type="submit"
-                    className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-lg transition-colors"
+                    disabled={loading}
+                    className={`bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-lg transition-colors ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
                 >
-                    {t('hero.getQuote')}
+                    {loading ? 'Sending...' : t('hero.getQuote')}
                 </button>
             </form>
         </div>
