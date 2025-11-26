@@ -22,6 +22,16 @@ export async function createProduct(formData: FormData) {
         console.error("Failed to parse images JSON", e)
     }
 
+    let priceTiers: any = null
+    try {
+        const priceTiersJson = formData.get("priceTiers") as string
+        if (priceTiersJson && priceTiersJson !== '[]') {
+            priceTiers = JSON.parse(priceTiersJson)
+        }
+    } catch (e) {
+        console.error("Failed to parse priceTiers JSON", e)
+    }
+
     await prisma.product.create({
         data: {
             name,
@@ -31,6 +41,7 @@ export async function createProduct(formData: FormData) {
             category,
             stock,
             images,
+            priceTiers,
         },
     })
 
@@ -56,6 +67,16 @@ export async function updateProduct(id: string, formData: FormData) {
         console.error("Failed to parse images JSON", e)
     }
 
+    let priceTiers: any = null
+    try {
+        const priceTiersJson = formData.get("priceTiers") as string
+        if (priceTiersJson && priceTiersJson !== '[]') {
+            priceTiers = JSON.parse(priceTiersJson)
+        }
+    } catch (e) {
+        console.error("Failed to parse priceTiers JSON", e)
+    }
+
     await prisma.product.update({
         where: { id },
         data: {
@@ -66,6 +87,7 @@ export async function updateProduct(id: string, formData: FormData) {
             category,
             stock,
             images,
+            priceTiers,
         },
     })
 
