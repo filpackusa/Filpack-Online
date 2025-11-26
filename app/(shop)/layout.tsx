@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import VisitorCounter from "@/components/VisitorCounter";
 import { CartProvider } from "@/context/CartContext";
 
 export default function ShopLayout({
@@ -19,7 +20,7 @@ export default function ShopLayout({
                             <p>&copy; 2025 Filpack Online. All rights reserved.</p>
                             <p className="mt-2 text-sm text-slate-500">200K ST NE 1012 Washington DC 20002</p>
                         </div>
-
+                        <VisitorCounter />
                     </div>
                 </div>
             </footer>
