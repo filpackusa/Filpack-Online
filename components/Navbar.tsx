@@ -100,6 +100,10 @@ export default function Navbar() {
                 {t('nav.products')}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-500 transition-all group-hover:w-full"></span>
               </Link>
+              <Link href="/about" className="hover:text-orange-600 transition-colors relative group">
+                About Us
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-500 transition-all group-hover:w-full"></span>
+              </Link>
               <Link href="/track-order" className="hover:text-orange-600 transition-colors relative group">
                 {t('nav.trackOrder')}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-500 transition-all group-hover:w-full"></span>
@@ -146,6 +150,7 @@ export default function Navbar() {
             </form>
             <nav className="flex flex-col gap-2 font-medium text-slate-700">
               <Link href="/products" className="px-4 py-3 hover:bg-slate-50 rounded-lg transition-colors">{t('nav.products')}</Link>
+              <Link href="/about" className="px-4 py-3 hover:bg-slate-50 rounded-lg transition-colors">About Us</Link>
               <Link href="/track-order" className="px-4 py-3 hover:bg-slate-50 rounded-lg transition-colors">{t('nav.trackOrder')}</Link>
               <Link href="/cart" className="px-4 py-3 flex items-center gap-3 text-orange-600 bg-orange-50 rounded-lg">
                 <ShoppingCart size={20} />
