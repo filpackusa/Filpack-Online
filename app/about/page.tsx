@@ -21,10 +21,27 @@ export default function AboutPage() {
                     {/* Company Overview */}
                     <section className="mb-12">
                         <h2 className="text-3xl font-bold text-slate-900 mb-6">Who We Are</h2>
-                        <div className="bg-white rounded-lg shadow-sm p-8 border border-slate-200">
-                            <p className="text-slate-700 leading-relaxed mb-4">
-                                {/* Content will be added here */}
-                                Welcome to Filpack Online - your trusted partner in professional food packaging solutions.
+                        <div className="bg-white rounded-lg shadow-sm p-8 border border-slate-200 space-y-4">
+                            <p className="text-slate-700 leading-relaxed">
+                                <strong className="text-orange-600">FILPACK USA INC.</strong> was established in 2023 to introduce its European-produced products to the North American market. The company began with the production of netting for fresh produce and later expanded its portfolio to include a wide range of products, from barrier films to fully automatic packaging machines.
+                            </p>
+                            <p className="text-slate-700 leading-relaxed">
+                                Operating in the plastic packaging sector, Filpack manufactures polyethylene-based net packaging products using advanced technology.
+                            </p>
+                            <p className="text-slate-700 leading-relaxed">
+                                Thanks to its entrepreneurial spirit and dynamic team, Filpack has proudly grown into a company that serves a diverse range of industries by continuously expanding its product line and adopting state-of-the-art technology. It partners with both domestic and international companies, producing products that meet global standards.
+                            </p>
+                            <p className="text-slate-700 leading-relaxed">
+                                Filpack's strength lies in its talented workforce, broad capabilities, global customer base, innovative product range, and advanced technological infrastructure.
+                            </p>
+                            <p className="text-slate-700 leading-relaxed">
+                                The company's mission is to be a leading, dynamic, and continuously evolving brand in the global packaging industry. Filpack places great importance on quality control and after-sales customer satisfaction. It is also an environmentally conscious company, producing recyclable packaging using raw materials that are safe for both human health and the environment.
+                            </p>
+                            <p className="text-slate-700 leading-relaxed">
+                                What sets Filpack apart is its conscientious, detail-oriented team, capable of delivering high-quality products on time, supported by a broad and loyal customer portfolio.
+                            </p>
+                            <p className="text-slate-700 leading-relaxed">
+                                Filpack has fully embraced a customer-centric production philosophy. With a flexible manufacturing process, a dynamic organizational structure, and modern equipment, the company strives to meet customer expectations at every stage—from identifying needs to measuring post-sale satisfaction—with the goal of ensuring maximum customer satisfaction. Filpack also provides customized solutions tailored to individual customer requirements.
                             </p>
                         </div>
                     </section>
