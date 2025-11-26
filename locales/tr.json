@@ -141,5 +141,9 @@
         "trackButton": "Kargom Nerede?",
         "items": "Sipariş İçeriği",
         "quantity": "adet"
+    },
+    "footer": {
+        "totalVisitors": "Toplam Ziyaretçi",
+        "todayVisitors": "Bugün"
     }
 }

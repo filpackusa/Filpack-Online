@@ -149,5 +149,9 @@
         "trackButton": "¿Dónde está mi carga?",
         "items": "Artículos del Pedido",
         "quantity": "cant"
+    },
+    "footer": {
+        "totalVisitors": "Visitantes Totales",
+        "todayVisitors": "Hoy"
     }
 }

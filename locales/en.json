@@ -149,5 +149,9 @@
         "trackButton": "Where is my cargo?",
         "items": "Order Items",
         "quantity": "qty"
+    },
+    "footer": {
+        "totalVisitors": "Total Visitors",
+        "todayVisitors": "Today"
     }
 }
