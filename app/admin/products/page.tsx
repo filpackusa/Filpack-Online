@@ -9,11 +9,12 @@ export const dynamic = 'force-dynamic'
 export default async function ProductsPage({
     searchParams,
 }: {
-    searchParams?: {
+    searchParams?: Promise<{
         search?: string
-    }
+    }>
 }) {
-    const search = searchParams?.search || ""
+    const params = await searchParams
+    const search = params?.search || ""
 
     const products = await prisma.product.findMany({
         where: {
