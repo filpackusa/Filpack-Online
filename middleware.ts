@@ -1,8 +1,21 @@
-import NextAuth from "next-auth"
-import { authConfig } from "./auth.config"
+import { NextResponse } from 'next/server'
+import type { NextRequest } from 'next/server'
 
-export default NextAuth(authConfig).auth
+export function middleware(request: NextRequest) {
+    // Check if the path starts with /admin
+    if (request.nextUrl.pathname.startsWith('/admin')) {
+        // Check for admin_token cookie
+        const token = request.cookies.get('admin_token')
+
+        if (!token) {
+            // Redirect to login if no token
+            return NextResponse.redirect(new URL('/login', request.url))
+        }
+    }
+
+    return NextResponse.next()
+}
 
 export const config = {
-    matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
+    matcher: ['/admin/:path*'],
 }
