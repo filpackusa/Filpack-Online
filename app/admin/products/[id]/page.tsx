@@ -32,7 +32,7 @@ export default async function EditProductPage({
             </div>
 
             <ProductForm
-                initialData={product}
+                initialData={product as any}
                 action={updateProduct.bind(null, product.id)}
                 buttonText="Update Product"
             />
