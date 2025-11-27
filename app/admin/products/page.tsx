@@ -4,6 +4,8 @@ import { Plus, Pencil, Trash } from "lucide-react"
 import { deleteProduct } from "@/app/actions/products"
 import ProductSearch from "@/components/admin/product-search"
 
+export const dynamic = 'force-dynamic'
+
 export default async function ProductsPage({
     searchParams,
 }: {
@@ -49,12 +51,13 @@ export default async function ProductsPage({
                             <th className="px-6 py-3">SKU</th>
                             <th className="px-6 py-3">Price</th>
                             <th className="px-6 py-3">Stock</th>
+                            <th className="px-6 py-3">Tiered Pricing</th>
                             <th className="px-6 py-3">Category</th>
                             <th className="px-6 py-3">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {products.map((product) => (
+                        {products.map((product: any) => (
                             <tr key={product.id} className="border-b hover:bg-gray-50">
                                 <td className="px-6 py-4 font-medium text-gray-900">
                                     {product.name}
@@ -62,6 +65,7 @@ export default async function ProductsPage({
                                 <td className="px-6 py-4">{product.sku}</td>
                                 <td className="px-6 py-4">${product.price.toFixed(2)}</td>
                                 <td className="px-6 py-4">{product.stock}</td>
+                                <td className="px-6 py-4">{(product as any).priceTiers && (product as any).priceTiers.length > 0 ? 'Yes' : 'No'}</td>
                                 <td className="px-6 py-4">{product.category}</td>
                                 <td className="flex gap-2 px-6 py-4">
                                     <Link
@@ -83,7 +87,7 @@ export default async function ProductsPage({
                         ))}
                         {products.length === 0 && (
                             <tr>
-                                <td colSpan={6} className="px-6 py-4 text-center">
+                                <td colSpan={7} className="px-6 py-4 text-center">
                                     No products found.
                                 </td>
                             </tr>

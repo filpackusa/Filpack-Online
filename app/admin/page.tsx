@@ -19,6 +19,8 @@ function SimpleCard({ title, value, icon: Icon, color }: any) {
     )
 }
 
+export const dynamic = 'force-dynamic'
+
 export default async function AdminDashboard() {
     let totalRevenue = 0
     let totalOrders = 0
