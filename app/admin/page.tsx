@@ -20,27 +20,73 @@ function SimpleCard({ title, value, icon: Icon, color }: any) {
 }
 
 export default async function AdminDashboard() {
+    let totalRevenue = 0
+    let totalOrders = 0
+    let totalProducts = 0
+    let totalCustomers = 0
+    let recentOrders: any[] = []
+    let errorDetails = ''
+
     try {
-        const [totalRevenueResult, totalOrders, totalProducts, totalCustomers, recentOrders] = await Promise.all([
-            prisma.order.aggregate({
+        // Fetch Total Revenue
+        try {
+            const revenueResult = await prisma.order.aggregate({
                 _sum: { total: true },
                 where: { status: { in: ['PAID', 'SHIPPED', 'DELIVERED'] } }
-            }),
-            prisma.order.count(),
-            prisma.product.count(),
-            prisma.customer.count(),
-            prisma.order.findMany({
+            })
+            totalRevenue = revenueResult._sum.total || 0
+        } catch (e) {
+            console.error('Error fetching revenue:', e)
+            errorDetails += 'Revenue failed. '
+        }
+
+        // Fetch Total Orders
+        try {
+            totalOrders = await prisma.order.count()
+        } catch (e) {
+            console.error('Error fetching orders count:', e)
+            errorDetails += 'Orders count failed. '
+        }
+
+        // Fetch Total Products
+        try {
+            totalProducts = await prisma.product.count()
+        } catch (e) {
+            console.error('Error fetching products count:', e)
+            errorDetails += 'Products count failed. '
+        }
+
+        // Fetch Total Customers
+        try {
+            totalCustomers = await prisma.customer.count()
+        } catch (e) {
+            console.error('Error fetching customers count:', e)
+            errorDetails += 'Customers count failed. '
+        }
+
+        // Fetch Recent Orders
+        try {
+            recentOrders = await prisma.order.findMany({
                 take: 5,
                 orderBy: { createdAt: 'desc' },
                 include: { customer: true }
             })
-        ])
-
-        const totalRevenue = totalRevenueResult._sum.total || 0
+        } catch (e) {
+            console.error('Error fetching recent orders:', e)
+            errorDetails += 'Recent orders failed. '
+        }
 
         return (
             <div className="space-y-8">
                 <h2 className="text-3xl font-bold text-gray-800">Dashboard Overview</h2>
+
+                {errorDetails && (
+                    <div className="rounded-md bg-yellow-50 p-4 border border-yellow-200">
+                        <p className="text-sm text-yellow-700">
+                            Warning: Some data could not be loaded. ({errorDetails})
+                        </p>
+                    </div>
+                )}
 
                 <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
                     <SimpleCard
@@ -95,7 +141,7 @@ export default async function AdminDashboard() {
                                                 #{order.id.slice(-6).toUpperCase()}
                                             </td>
                                             <td className="px-6 py-4">
-                                                {order.customer.name || order.customer.email}
+                                                {order.customer?.name || order.customer?.email || 'Unknown'}
                                             </td>
                                             <td className="px-6 py-4">
                                                 <span className={`rounded-full px-2 py-1 text-xs font-semibold ${order.status === "PAID" ? "bg-green-100 text-green-800" :
@@ -118,13 +164,13 @@ export default async function AdminDashboard() {
             </div>
         )
     } catch (error) {
-        console.error('Admin dashboard error:', error)
+        console.error('Admin dashboard fatal error:', error)
         return (
             <div className="space-y-8">
                 <h2 className="text-3xl font-bold text-gray-800">Dashboard Overview</h2>
                 <div className="rounded-xl bg-red-50 border border-red-200 p-6">
                     <h3 className="text-lg font-semibold text-red-800 mb-2">Error Loading Dashboard</h3>
-                    <p className="text-red-600">Unable to load dashboard data. Please check database connection.</p>
+                    <p className="text-red-600">Unable to load dashboard data.</p>
                     <p className="text-sm text-red-500 mt-2">Error: {error instanceof Error ? error.message : 'Unknown error'}</p>
                 </div>
             </div>
