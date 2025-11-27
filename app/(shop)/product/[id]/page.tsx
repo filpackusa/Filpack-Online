@@ -19,7 +19,7 @@ export default async function ProductDetail({ params }: { params: Promise<{ id: 
 
     const product = {
         ...result.product,
-        priceTiers: result.product.priceTiers as any
+        priceTiers: (result.product as any).priceTiers
     };
 
     return (

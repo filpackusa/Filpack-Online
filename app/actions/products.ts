@@ -42,7 +42,7 @@ export async function createProduct(formData: FormData) {
             stock,
             images,
             priceTiers,
-        },
+        } as any,
     })
 
     revalidatePath("/admin/products")
@@ -88,7 +88,7 @@ export async function updateProduct(id: string, formData: FormData) {
             stock,
             images,
             priceTiers,
-        },
+        } as any,
     })
 
     revalidatePath("/admin/products")

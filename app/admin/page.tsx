@@ -34,7 +34,7 @@ export default async function AdminDashboard() {
                 _sum: { total: true },
                 where: { status: { in: ['PAID', 'SHIPPED', 'DELIVERED'] } }
             })
-            totalRevenue = revenueResult._sum.total || 0
+            totalRevenue = (revenueResult._sum.total as any) || 0
         } catch (e) {
             console.error('Error fetching revenue:', e)
             errorDetails += 'Revenue failed. '
