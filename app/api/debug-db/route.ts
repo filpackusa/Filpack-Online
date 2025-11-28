@@ -9,11 +9,21 @@ export async function GET() {
         const dbUrl = process.env.DATABASE_URL || "NOT_SET"
         const maskedUrl = dbUrl.replace(/:[^:@]+@/, ":***@") // Mask password
 
+        // Force revalidate admin products page
+        try {
+            const { revalidatePath } = await import("next/cache")
+            revalidatePath("/admin/products")
+            revalidatePath("/products")
+        } catch (e) {
+            console.error("Failed to revalidate", e)
+        }
+
         return NextResponse.json({
             status: "success",
             productCount,
             databaseUrl: maskedUrl,
-            env: process.env.NODE_ENV
+            env: process.env.NODE_ENV,
+            revalidated: true
         })
     } catch (error: any) {
         return NextResponse.json({

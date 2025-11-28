@@ -16,6 +16,8 @@ export default async function ProductsPage({
     const params = await searchParams
     const search = params?.search || ""
 
+    console.log(`[AdminProducts] Search term: "${search}"`)
+
     const products = await prisma.product.findMany({
         where: {
             OR: [
@@ -25,6 +27,8 @@ export default async function ProductsPage({
         },
         orderBy: { createdAt: "desc" },
     })
+
+    console.log(`[AdminProducts] Found ${products.length} products`)
 
     return (
         <div>
